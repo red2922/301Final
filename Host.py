@@ -2,5 +2,16 @@ import socket
 import os
 import time 
 
-def connection():
-    s = socket.scoket(socket.AF_INET, socket.SOCK_STREAM) 
+#THIS IS A MALICIOUS PROJECT. ONCE COMPLETED PLEASE DO NOT OPEN ON YOU PERSONAL MACHINE 
+
+
+Host = "0.0.0.0"
+Port = 443
+Max_Size = 1024 * 128
+
+SEPERATOR = "<sep>"
+
+
+
+
+s = socket.socket()
