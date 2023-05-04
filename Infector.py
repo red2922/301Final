@@ -23,11 +23,23 @@ while True:
 
 
 
+<<<<<<< HEAD
     # receive the command from the server
+=======
+
+
+
+
+
+
+
+
+    '''#gets the command from the server
+>>>>>>> 4bfd87d4ad7befb4aa07655e101a86a9a5e8e512
     command = s.recv(BUFFER_SIZE).decode()
     splited_command = command.split()
-    if command.lower() == "exit":
-        # if the command is exit, just break out of the loop
+    if command.lower() == "quit":
+        # if the command is quit, just break out of the loop
         break
     if splited_command[0].lower() == "cd":
         # cd command, change directory
