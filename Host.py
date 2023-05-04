@@ -16,6 +16,10 @@ To Do List:
 
 - Currently you are able to connect to each other but only when hard coded. Possibly find a way to completely change that and have 
 it so whenever any laptop can run the code 
+
+-Make way to send and recieve code. From windows to linux must be a way to run code (Converting stings to Binary/byte like Object)
+
+
 '''
 
 
