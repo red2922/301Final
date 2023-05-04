@@ -14,7 +14,6 @@ SEPARATOR = "<sep>"
 
 
 s = socket.socket()
-
 s.bind((Host,Port))
 
 s.listen(5)
