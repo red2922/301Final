@@ -23,7 +23,7 @@ it so whenever any laptop can run the code
 '''
 
 
-Host = "0.0.0.0"  #Host listens on everything
+Host = "0.0.0.0"  #Host listens on everything 
 Port = 80           #HTTP Port
 
 Size = 1024 * 128  #Size of message
