@@ -16,7 +16,7 @@ BUFFER_SIZE = 1024 * 128 # 128KB max size of messages, feel free to increase
 SEPARATOR = "<sep>"
 
 # connect to the server
-s.connect(('10.67.98.152', Port))
+s.connect(('10.67.98.152', Port)) #Your IP Here. Should change to host variable at onepoint. Currently only can connect if host is exact
 
 cwd = os.getcwd() #Sets cwd to os.getcwd()
 

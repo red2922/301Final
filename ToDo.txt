@@ -1,0 +1,70 @@
+THIS IS A MALICIOUS PROJECT. ONCE COMPLETED PLEASE DO NOT OPEN ON YOU PERSONAL MACHINE 
+This is currently for a windows OS but I would like to change it to a Linux. This a majorly a test to see what we can learn from 
+how a virus like this works. 
+
+Need to pwd, then ls, then give commands to user
+
+Implement a way to input any command by user. If command is wrong print out a message saying the command doesn't exist or even
+just return the error message from the linux machine 
+
+Also Create a Assembly program that will automatically force the computer to run the Infector.py script
+
+
+To Do List:
+-File must start automatically
+-File must also restart itself when stopped
+-Be able to put in any commands and have it successfully run 
+
+- Currently you are able to connect to each other but only when hard coded. Possibly find a way to completely change that and have 
+it so whenever any laptop can run the code 
+
+-Make way to send and recieve code. From windows to linux must be a way to run code (Converting stings to Binary/byte like Object)
+
+
+What is done:
+successfully created a socket server 
+s.socket((Host,Port))
+
+Found a way to send and revieve messages
+
+Client Side: 
+infected.send(message.encode())
+infected.recv(Max Message size)
+
+Infected Side:
+(Sends to server)
+s.send(cwd.encode())
+
+Need to add a recv while loop in order to take in any command that comes in and then sends the output from the linux side
+
+
+For every command sent there should be a way to recv (Hence the recv)
+for every command that is send there should be a recv function called and displayed to the user. 
+
+To Do: Infected
+recv a command
+run a command 
+return the output of it 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TO Luke <3 and Zach
