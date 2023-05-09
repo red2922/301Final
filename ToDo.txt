@@ -15,6 +15,10 @@ To Do List:
 -File must also restart itself when stopped
 -Be able to put in any commands and have it successfully run 
 
+Host.py looks good
+
+Infected.py needs to be updated and changed. Lines 25 to end 
+
 - Currently you are able to connect to each other but only when hard coded. Possibly find a way to completely change that and have 
 it so whenever any laptop can run the code 
 
