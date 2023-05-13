@@ -1,7 +1,6 @@
 import socket
 import os
 import subprocess
-import sys
 
 #run this side in 
 
